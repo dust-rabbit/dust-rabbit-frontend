@@ -1,0 +1,19 @@
+{
+  "plugins": ["import", "jsx-a11y", "react", "react-hooks"],
+  "extends": [
+    "plugin:import/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:@tanstack/eslint-plugin-query/recommended",
+    "airbnb",
+    "airbnb-typescript",
+    "next",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "tsconfig.json"
+  },
+  "rules": {}
+}
