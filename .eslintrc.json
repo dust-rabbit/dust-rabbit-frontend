@@ -15,5 +15,7 @@
   "parserOptions": {
     "project": "tsconfig.json"
   },
-  "rules": {}
+  "rules": {
+    "import/prefer-default-export": "off"
+  }
 }
