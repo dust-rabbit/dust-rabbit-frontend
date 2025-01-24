@@ -15,5 +15,13 @@
   "parserOptions": {
     "project": "tsconfig.json"
   },
-  "rules": {}
+  "rules": {
+    "import/prefer-default-export": "off"
+  },
+  "overrides": [
+    {
+      "files": ["*.js"],
+      "extends": ["plugin:@typescript-eslint/disable-type-checked"]
+    }
+  ]
 }
