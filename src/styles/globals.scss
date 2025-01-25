@@ -10,11 +10,26 @@ span,
 applet,
 object,
 iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
+h1 {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
 h6,
 p,
 blockquote,
@@ -133,4 +148,26 @@ q::after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+/*  row, column 컨테이너 스타일은 전역적으로 쓰일 것 같아서 globals.scss에 작성했습니다.
+    row, column은 container를 상속받아서 사용합니다. */
+%container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+}
+
+.row {
+  @extend %container;
+
+  flex-direction: row;
+}
+
+.column {
+  @extend %container;
+
+  flex-direction: column;
 }
