@@ -9,7 +9,7 @@
   cursor: pointer;
 
   &:active {
-    background-color: color.$button-active; // TODO: 활성화 색상은 뭘로 하지..
+    background-color: colors.$button-active; // TODO: 활성화 색상은 뭘로 하지..
   }
 }
 
