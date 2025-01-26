@@ -1,0 +1,30 @@
+@use "@/styles/colors";
+
+%button {
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+
+  &:active {
+    background-color: colors.$button-active; // TODO: 활성화 색상은 뭘로 하지..
+  }
+}
+
+.default {
+  @extend %button;
+
+  background-color: colors.$button-normal;
+  height: 52px;
+  width: 100%;
+}
+
+.go-back {
+  @extend %button;
+
+  background-color: colors.$fill-normal;
+  height: 40px;
+  width: 40px;
+}
