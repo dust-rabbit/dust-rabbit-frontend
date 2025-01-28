@@ -3,3 +3,4 @@ export * from "./progress-indicator/progress-indicator";
 export * from "./button/button";
 export * from "./button/page-back-button";
 export * from "./input/input";
+export * from "./form/form";

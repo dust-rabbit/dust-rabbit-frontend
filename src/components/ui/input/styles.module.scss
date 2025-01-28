@@ -1,22 +1,10 @@
 @use "@/styles/colors";
 
-%input {
-  border-radius: 8px;
-  border: 1px solid colors.$button-normal;
-  outline: none;
-  padding: 0 14px;
-  font-size: 16px;
-  box-sizing: border-box;
-
-  &:focus {
-    border: 2px solid colors.$primary-normal;
-  }
-}
-
 .default {
-  @extend %input;
-
-  background-color: colors.$fill-normal;
-  height: 52px;
+  border: none;
+  outline: none;
+  height: 100%;
   width: 100%;
+  font-size: 16px;
+  background-color: colors.$fill-normal;
 }

@@ -2,7 +2,7 @@
 
 import { OnboardingNavbar } from "@/components/shared";
 import { useProgress } from "@/hooks";
-import { Button, PageBackButton, Input } from "@/components/ui";
+import { Button, PageBackButton, Form } from "@/components/ui";
 
 export default function Home() {
   const { progress, incrementProgress } = useProgress({ maxProgress: 4 });
@@ -16,7 +16,7 @@ export default function Home() {
       </div>
       <PageBackButton />
       <Button>다음</Button>
-      <Input />
+      <Form />
     </>
   );
 }

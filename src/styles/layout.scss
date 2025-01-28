@@ -1,10 +1,12 @@
+@use "@/styles/colors";
+
 .layout {
   max-width: 430px;
   min-height: 100vh;
   margin: 0 auto;
   padding: 20px;
   gap: 30px;
-  background-color: #fafafa;
+  background-color: colors.$fill-normal;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
