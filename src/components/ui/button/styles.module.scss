@@ -28,3 +28,10 @@
   height: 40px;
   width: 40px;
 }
+
+.icon {
+  @extend %button;
+
+  width: 18px;
+  height: 18px;
+}
