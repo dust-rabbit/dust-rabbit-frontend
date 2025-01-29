@@ -1,8 +1,8 @@
 "use client";
 
-import { OnboardingNavbar } from "@/components/shared";
+import { OnboardingNavbar, Form } from "@/components/shared";
 import { useProgress } from "@/hooks";
-import { Button, PageBackButton, Form } from "@/components/ui";
+import { Button, PageBackButton } from "@/components/ui";
 
 export default function Home() {
   const { progress, incrementProgress } = useProgress({ maxProgress: 4 });

@@ -1,7 +1,7 @@
 "use client";
 
-import ChevronLeft from "@/assets/chevron.left.svg";
 import { useRouter } from "next/navigation";
+import ChevronLeft from "@/assets/chevron.left.svg";
 import styles from "./styles.module.scss";
 
 export function PageBackButton() {
