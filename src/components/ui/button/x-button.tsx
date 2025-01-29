@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import SmallX from "@/assets/small.x.svg";
 import styles from "./styles.module.scss";
 
 export default function XButton({
@@ -12,9 +12,5 @@ export default function XButton({
 }) {
   if (!inputValue) return null;
 
-  return (
-    <button type="button" className={styles.icon} onClick={onClear}>
-      <Image src="small.x.svg" width={18} height={18} alt="smallx" />
-    </button>
-  );
+  return <SmallX className={styles.icon} onClick={onClear} />;
 }
