@@ -1,6 +1,6 @@
 "use client";
 
-import { OnboardingNavbar } from "@/components/shared";
+import { OnboardingNavbar, Form } from "@/components/shared";
 import { useProgress } from "@/hooks";
 import { Button, PageBackButton } from "@/components/ui";
 
@@ -16,6 +16,7 @@ export default function Home() {
       </div>
       <PageBackButton />
       <Button>다음</Button>
+      <Form />
     </>
   );
 }

@@ -16,6 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Dust Rabbit",
   description: "Dust Rabbit",
+  icons: "munto.png",
 };
 
 export default function RootLayout({

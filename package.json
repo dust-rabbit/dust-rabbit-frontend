@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -21,6 +21,7 @@
     "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
     "@eslint/eslintrc": "^3",
+    "@svgr/webpack": "^8.1.0",
     "@tanstack/eslint-plugin-query": "^5.64.2",
     "@types/node": "^20",
     "@types/react": "^19",
