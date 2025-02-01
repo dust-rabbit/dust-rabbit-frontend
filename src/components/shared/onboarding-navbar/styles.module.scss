@@ -1,6 +1,11 @@
 .container {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 16px;
   height: 100%;
+  width: 100%;
+}
+
+.progress-bar {
+  flex: 1;
 }

@@ -1,17 +1,23 @@
-import { ProgressBar, ProgressIndicator } from "@/components/ui";
+import { PageBackButton, ProgressBar, ProgressIndicator } from "@/components/ui";
 import styles from "./styles.module.scss";
 
 interface Props {
   progress: number;
   incrementProgress: () => void;
+  maxProgress: number;
 }
 
-export function OnboardingNavbar({ progress, incrementProgress }: Readonly<Props>) {
+export function OnboardingNavbar({ progress, incrementProgress, maxProgress }: Readonly<Props>) {
   return (
     <>
       <div className={styles.container}>
-        <ProgressBar width={200} height={30} progress={progress} maxProgress={4} />
-        <ProgressIndicator current={progress} total={4} />
+        <PageBackButton />
+        <ProgressBar
+          className={styles["progress-bar"]}
+          progress={progress}
+          maxProgress={maxProgress}
+        />
+        <ProgressIndicator current={progress} total={maxProgress} />
       </div>
       <button type="button" onClick={incrementProgress}>
         increment
