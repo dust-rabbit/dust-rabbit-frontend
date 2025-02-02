@@ -1,14 +1,13 @@
-"use client";
-
 import ChevronLeft from "@/assets/chevron.left.svg";
-import { useRouter } from "next/navigation";
 import styles from "./styles.module.scss";
 
-export function PageBackButton() {
-  const router = useRouter();
+type Props = {
+  onClick: () => void;
+};
 
+export function PageBackButton({ onClick }: Readonly<Props>) {
   return (
-    <button type="button" className={styles["go-back"]} onClick={() => router.back()}>
+    <button type="button" className={styles["go-back"]} onClick={onClick}>
       <ChevronLeft />
     </button>
   );
