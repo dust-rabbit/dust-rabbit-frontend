@@ -4,8 +4,8 @@ interface UseFunnelReturn<T> {
   currentStep: T;
   goToStep: (stepIndex: number) => void;
   currentStepIndex: number;
-  isFirstStep: boolean;
-  isLastStep: boolean;
+  goToPreviousStep: () => void;
+  goToNextStep: () => void;
 }
 
 export const useFunnel = <T extends string>(
@@ -24,11 +24,19 @@ export const useFunnel = <T extends string>(
     [steps],
   );
 
+  const goToPreviousStep = useCallback(() => {
+    goToStep(currentStepIndex - 1);
+  }, [goToStep, currentStepIndex]);
+
+  const goToNextStep = useCallback(() => {
+    goToStep(currentStepIndex + 1);
+  }, [goToStep, currentStepIndex]);
+
   return {
     currentStep,
     goToStep,
     currentStepIndex,
-    isFirstStep: currentStepIndex === 0,
-    isLastStep: currentStepIndex === steps.length - 1,
+    goToPreviousStep,
+    goToNextStep,
   };
 };

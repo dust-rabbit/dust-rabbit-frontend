@@ -1,4 +1,4 @@
-import { SignUpStep } from "@/type";
+import { SignUpForm, SignUpStep } from "@/type";
 
 export const SIGN_UP_STEPS: SignUpStep[] = [
   "성별 선택",
@@ -7,3 +7,10 @@ export const SIGN_UP_STEPS: SignUpStep[] = [
   "출생시간 입력",
   "MBTI 입력",
 ];
+
+export const DEFAULT_FORM: SignUpForm = {
+  gender: undefined,
+  name: "",
+  birthDate: "",
+  mbti: "",
+};

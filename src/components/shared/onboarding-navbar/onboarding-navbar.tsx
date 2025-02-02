@@ -4,14 +4,15 @@ import styles from "./styles.module.scss";
 interface Props {
   stepIndex: number;
   totalSteps: number;
+  goToPreviousStep: () => void;
 }
 
-export function OnboardingNavbar({ stepIndex, totalSteps }: Readonly<Props>) {
+export function OnboardingNavbar({ stepIndex, totalSteps, goToPreviousStep }: Readonly<Props>) {
   const progress = stepIndex + 1;
 
   return (
     <div className={styles.container}>
-      <PageBackButton />
+      <PageBackButton onClick={goToPreviousStep} />
       <ProgressBar
         className={styles["progress-bar"]}
         progress={progress}
