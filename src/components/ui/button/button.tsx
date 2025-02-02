@@ -1,10 +1,13 @@
-"use client";
-
 import styles from "./styles.module.scss";
 
-export function Button({ children }: { children: string }) {
+type Props = {
+  children: string;
+  onClick?: () => void;
+};
+
+export function Button({ children, onClick }: Readonly<Props>) {
   return (
-    <button type="button" className={styles.default}>
+    <button type="button" className={styles.default} onClick={onClick}>
       <h5>{children}</h5>
     </button>
   );

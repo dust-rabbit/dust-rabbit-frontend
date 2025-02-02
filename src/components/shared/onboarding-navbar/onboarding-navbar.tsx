@@ -1,21 +1,24 @@
-import { ProgressBar, ProgressIndicator } from "@/components/ui";
+import { PageBackButton, ProgressBar, ProgressIndicator } from "@/components/ui";
 import styles from "./styles.module.scss";
 
 interface Props {
-  progress: number;
-  incrementProgress: () => void;
+  stepIndex: number;
+  totalSteps: number;
+  goToPreviousStep: () => void;
 }
 
-export function OnboardingNavbar({ progress, incrementProgress }: Readonly<Props>) {
+export function OnboardingNavbar({ stepIndex, totalSteps, goToPreviousStep }: Readonly<Props>) {
+  const progress = stepIndex + 1;
+
   return (
-    <>
-      <div className={styles.container}>
-        <ProgressBar width={200} height={30} progress={progress} maxProgress={4} />
-        <ProgressIndicator current={progress} total={4} />
-      </div>
-      <button type="button" onClick={incrementProgress}>
-        increment
-      </button>
-    </>
+    <div className={styles.container}>
+      <PageBackButton onClick={goToPreviousStep} />
+      <ProgressBar
+        className={styles["progress-bar"]}
+        progress={progress}
+        maxProgress={totalSteps}
+      />
+      <ProgressIndicator current={progress} total={totalSteps} />
+    </div>
   );
 }
