@@ -2,14 +2,24 @@
 
 import { Form, OnboardingNavbar } from "@/components/shared";
 import { Button } from "@/components/ui";
-import { useProgress } from "@/hooks";
+import { useFunnel } from "@/hooks";
+import { SIGN_UP_STEPS } from "@/lib/const";
+import { SignUpStep } from "@/type";
 
 export default function Home() {
-  const { progress, incrementProgress } = useProgress({ maxProgress: 4 });
+  const { currentStep, goToStep, currentStepIndex } = useFunnel<SignUpStep>(SIGN_UP_STEPS);
+
+  const goToNextStep = () => {
+    goToStep(currentStepIndex + 1);
+  };
 
   return (
     <>
-      <OnboardingNavbar progress={progress} incrementProgress={incrementProgress} maxProgress={4} />
+      <OnboardingNavbar stepIndex={currentStepIndex} totalSteps={SIGN_UP_STEPS.length} />
+      <button type="button" onClick={goToNextStep}>
+        increment
+      </button>
+      {currentStep}
       <div className="row">
         <Button>여자</Button>
         <Button>남자</Button>

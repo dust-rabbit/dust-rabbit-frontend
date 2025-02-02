@@ -1,1 +1,1 @@
-export * from "./useProgress";
+export * from "./useFunnel";
