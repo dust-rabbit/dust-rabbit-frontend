@@ -1,12 +1,9 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   // svgr 적용을 위한 config 세팅입니다. (https://react-svgr.com/docs/next/)
   webpack(config) {
     // Grab the existing rule that handles SVG imports
-    const fileLoaderRule = config.module.rules.find(
-      (rule: { test: { test: (arg0: string) => any } }) => rule.test?.test?.(".svg"),
-    );
+    const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.(".svg"));
     config.module.rules.push(
       {
         // Reapply the existing rule, but only for svg imports ending in ?url
@@ -29,4 +26,4 @@ const nextConfig: NextConfig = {
   output: "export",
 };
 
-export default nextConfig;
+module.exports = nextConfig;
