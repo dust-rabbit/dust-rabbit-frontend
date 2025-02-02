@@ -12,5 +12,6 @@ export const DEFAULT_FORM: SignUpForm = {
   gender: undefined,
   name: "",
   birthDate: "",
+  birthTime: undefined,
   mbti: "",
 };

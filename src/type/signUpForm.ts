@@ -1,7 +1,7 @@
 export type SignUpForm = {
-  gender: "male" | "female" | undefined;
+  gender: "남자" | "여자" | undefined;
   name: string;
   birthDate: string;
-  birthTime?: string;
+  birthTime: string | undefined;
   mbti: string;
 };
