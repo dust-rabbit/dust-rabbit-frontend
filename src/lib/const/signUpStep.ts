@@ -7,6 +7,7 @@ export const SIGN_UP_STEPS: SignUpStep[] = [
   "출생시간 입력",
   "MBTI 입력",
 ];
+Object.freeze(SIGN_UP_STEPS);
 
 export const DEFAULT_FORM: SignUpForm = {
   gender: undefined,
@@ -15,3 +16,4 @@ export const DEFAULT_FORM: SignUpForm = {
   birthTime: undefined,
   mbti: "",
 };
+Object.freeze(DEFAULT_FORM);
