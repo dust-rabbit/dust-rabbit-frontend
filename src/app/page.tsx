@@ -1,7 +1,6 @@
 "use client";
 
 import { Form, OnboardingNavbar, MbtiCardContainer, TypeBirthDateStep } from "@/components/shared";
-import { Form, OnboardingNavbar, TypeBirthDateStep } from "@/components/shared";
 import { Button } from "@/components/ui";
 import { useForm, useFunnel } from "@/hooks";
 import { DEFAULT_FORM, SIGN_UP_STEPS } from "@/lib/const";
