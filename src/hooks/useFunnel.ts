@@ -9,7 +9,7 @@ interface UseFunnelReturn<T> {
 }
 
 export const useFunnel = <T extends string>(
-  steps: T[],
+  steps: readonly T[],
   initialStep: T = steps[0],
 ): UseFunnelReturn<T> => {
   const [currentStep, setCurrentStep] = useState<T>(initialStep);
