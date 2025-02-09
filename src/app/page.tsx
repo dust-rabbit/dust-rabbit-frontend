@@ -1,6 +1,6 @@
 "use client";
 
-import { Form, OnboardingNavbar, MbtiCardContainer } from "@/components/shared";
+import { Form, OnboardingNavbar, TypeBirthDateStep, MbtiCardContainer } from "@/components/shared";
 import { Button } from "@/components/ui";
 import { useForm, useFunnel } from "@/hooks";
 import { DEFAULT_FORM, SIGN_UP_STEPS } from "@/lib/const";
@@ -10,7 +10,7 @@ export default function Home() {
   const { currentStep, currentStepIndex, goToPreviousStep, goToNextStep } =
     useFunnel<SignUpStep>(SIGN_UP_STEPS);
 
-  const { form, handleChange } = useForm<SignUpForm>(DEFAULT_FORM);
+  const { handleChange } = useForm<SignUpForm>(DEFAULT_FORM);
 
   return (
     <>
@@ -27,15 +27,15 @@ export default function Home() {
         </div>
       )}
       {currentStep === "이름 입력" && <Form />}
-      {currentStep === "생년월일 입력" && <Form />}
+      {currentStep === "생년월일 입력" && <TypeBirthDateStep />}
       {currentStep === "출생시간 입력" && <Form />}
       {currentStep === "MBTI 입력" && <MbtiCardContainer />}
       {currentStep}
-      <div>name: {form.name}</div>
+      {/* <div>name: {form.name}</div>
       <div>gender: {form.gender}</div>
       <div>birthDate: {form.birthDate}</div>
       <div>birthTime: {form.birthTime}</div>
-      <div>mbti: {form.mbti}</div>
+      <div>mbti: {form.mbti}</div> */}
     </>
   );
 }
