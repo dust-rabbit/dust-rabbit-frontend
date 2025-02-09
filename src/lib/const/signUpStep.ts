@@ -1,6 +1,6 @@
 import { SignUpForm, SignUpStep } from "@/type";
 
-export const SIGN_UP_STEPS: SignUpStep[] = [
+export const SIGN_UP_STEPS: readonly SignUpStep[] = [
   "성별 선택",
   "이름 입력",
   "생년월일 입력",
@@ -9,7 +9,7 @@ export const SIGN_UP_STEPS: SignUpStep[] = [
 ];
 Object.freeze(SIGN_UP_STEPS);
 
-export const DEFAULT_FORM: SignUpForm = {
+export const DEFAULT_FORM: Readonly<SignUpForm> = {
   gender: undefined,
   name: "",
   birthDate: "",
