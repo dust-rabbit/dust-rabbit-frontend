@@ -150,6 +150,12 @@ table {
   border-spacing: 0;
 }
 
+button {
+  color: inherit;
+  border: none;
+  cursor: pointer;
+}
+
 /*  row, column 컨테이너 스타일은 전역적으로 쓰일 것 같아서 globals.scss에 작성했습니다.
     row, column은 container를 상속받아서 사용합니다. */
 %container {

@@ -6,20 +6,19 @@
   place-items: center;
   justify-content: space-between;
   border-radius: 8px;
-  border: 1px solid colors.$button-normal;
+  border: solid 2px colors.$button-normal;
   outline: none;
   padding: 2px 14px;
   box-sizing: border-box;
 
   &:focus-within {
-    border: 2px solid colors.$primary-normal;
+    border: solid 2px colors.$primary-normal;
   }
 }
 
 .input {
   border: none;
   outline: none;
-  height: 100%;
   width: 100%;
   font-size: 16px;
   background-color: colors.$fill-normal;

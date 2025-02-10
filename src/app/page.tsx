@@ -1,6 +1,6 @@
 "use client";
 
-import { Form, OnboardingNavbar, TypeBirthDateStep } from "@/components/shared";
+import { Form, OnboardingNavbar, MbtiCardContainer, TypeBirthDateStep } from "@/components/shared";
 import { Button } from "@/components/ui";
 import { useForm, useFunnel } from "@/hooks";
 import { DEFAULT_FORM, SIGN_UP_STEPS } from "@/lib/const";
@@ -29,7 +29,7 @@ export default function Home() {
       {currentStep === "이름 입력" && <Form />}
       {currentStep === "생년월일 입력" && <TypeBirthDateStep />}
       {currentStep === "출생시간 입력" && <Form />}
-      {currentStep === "MBTI 입력" && <Form />}
+      {currentStep === "MBTI 입력" && <MbtiCardContainer />}
       {currentStep}
       {/* <div>name: {form.name}</div>
       <div>gender: {form.gender}</div>
