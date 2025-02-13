@@ -6,13 +6,13 @@
   place-items: center;
   justify-content: space-between;
   border-radius: 8px;
-  border: solid 2px colors.$button-normal;
+  border: solid 2px;
   outline: none;
   padding: 2px 14px;
   box-sizing: border-box;
 
   &:focus-within {
-    border: solid 2px colors.$primary-normal;
+    border: solid 2px;
   }
 }
 
@@ -21,7 +21,7 @@
   outline: none;
   width: 100%;
   font-size: 16px;
-  background-color: colors.$fill-normal;
+  // background-color: colors.$fill-normal;
 }
 
 .default {

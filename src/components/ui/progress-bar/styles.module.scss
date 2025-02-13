@@ -10,7 +10,7 @@
 .progress-bar-shadow {
   position: relative;
   height: 4px;
-  background-color: colors.$progress-bar-shadow;
+  // background-color: colors.$progress-bar-shadow;
   border-radius: 8px;
   margin: 8px;
 }
@@ -18,7 +18,7 @@
 .progress-bar {
   position: absolute;
   height: 100%;
-  background-color: colors.$progress-bar;
+  // background-color: colors.$progress-bar;
   border-radius: 8px;
   transition: width 0.2s ease-in-out;
 }

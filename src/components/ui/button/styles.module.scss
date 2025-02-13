@@ -6,16 +6,17 @@
   justify-content: center;
   border-radius: 8px;
   cursor: pointer;
+  color: colors.$common-white;
 
   &:active {
-    background-color: colors.$button-active; // TODO: 활성화 색상은 뭘로 하지..
+    background-color: colors.$primary-strong;
   }
 }
 
 .default {
   @extend %button;
 
-  background-color: colors.$button-normal;
+  background-color: colors.$primary-normal;
   height: 52px;
   width: 100%;
 }
@@ -23,7 +24,7 @@
 .go-back {
   @extend %button;
 
-  background-color: colors.$fill-normal;
+  // background-color: colors.$fill-normal;
   height: 40px;
   width: 40px;
 }
