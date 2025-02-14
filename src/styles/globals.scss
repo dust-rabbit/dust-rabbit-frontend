@@ -13,10 +13,7 @@
 }
 
 html,
-body {
-  font-family: Pretendard, sans-serif;
-}
-
+body,
 div,
 span,
 applet,
@@ -141,9 +138,10 @@ section {
 }
 
 body {
-  background-color: white;
+  background-color: colors.$bg-default;
   line-height: 1;
-  // TODO: pretendard font 적용
+  font-family: Pretendard, sans-serif;
+  padding: 20px;
 }
 
 ol,

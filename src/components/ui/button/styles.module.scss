@@ -21,9 +21,27 @@
   background-color: colors.$primary-normal;
 }
 
+.primary-bottom {
+  @extend %button;
+
+  position: absolute;
+  bottom: 60px;
+  background-color: colors.$primary-normal;
+}
+
 .disabled {
   @extend %button;
 
+  background-color: colors.$bg-disabled;
+  color: colors.$text-disabled;
+  cursor: none;
+}
+
+.disabled-bottom {
+  @extend %button;
+
+  position: absolute;
+  bottom: 0;
   background-color: colors.$bg-disabled;
   color: colors.$text-disabled;
   cursor: none;

@@ -37,7 +37,9 @@ export default function Home() {
       {currentStep === "생년월일 입력" && <TypeBirthDateStep />}
       {currentStep === "출생시간 입력" && <Form />}
       {currentStep === "MBTI 입력" && <MbtiCardContainer />}
-      <Button onClick={goToNextStep}>다음</Button>
+      <Button onClick={goToNextStep} direction="bottom">
+        다음
+      </Button>
     </>
   );
 }

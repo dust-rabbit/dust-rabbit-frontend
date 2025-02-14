@@ -3,7 +3,11 @@ import bubble from "@/assets/bubble.png";
 import Image from "next/image";
 import styles from "./styles.module.scss";
 
-export function QuestionBox({ step }: { step: SignUpStep }) {
+type Props = {
+  step: SignUpStep;
+};
+
+export function QuestionBox({ step }: Props) {
   return (
     <div className={styles["question-box"]}>
       <Image src={bubble} alt="bubble" className={styles.bubble} />
