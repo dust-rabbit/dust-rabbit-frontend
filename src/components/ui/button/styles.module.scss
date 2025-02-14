@@ -7,6 +7,8 @@
   border-radius: 8px;
   cursor: pointer;
   color: colors.$common-white;
+  width: 100%;
+  height: 52px;
 
   &:active {
     background-color: colors.$primary-strong;
@@ -17,14 +19,49 @@
   @extend %button;
 
   background-color: colors.$primary-normal;
-  height: 52px;
+}
+
+.select-container {
   width: 100%;
+  height: fit-content;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.select {
+  @extend %button;
+
+  justify-content: space-between;
+  padding: 14px 20px;
+  color: colors.$text-disabled;
+  background-color: colors.$bg-light;
+  border: solid 2px colors.$bg-light;
+
+  &:active {
+    background-color: colors.$bg-light;
+  }
+}
+
+.selected {
+  @extend %button;
+
+  justify-content: space-between;
+  padding: 14px 20px;
+  border: solid 2px colors.$primary-strong;
+  color: colors.$primary-normal;
+  background-color: colors.$primary-light;
+  transition: all 0.1s;
+
+  &:active {
+    background-color: colors.$primary-light;
+  }
 }
 
 .go-back {
   @extend %button;
 
-  // background-color: colors.$fill-normal;
   height: 40px;
   width: 40px;
 }
