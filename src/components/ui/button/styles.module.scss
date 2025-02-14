@@ -15,10 +15,18 @@
   }
 }
 
-.default {
+.primary {
   @extend %button;
 
   background-color: colors.$primary-normal;
+}
+
+.disabled {
+  @extend %button;
+
+  background-color: colors.$bg-disabled;
+  color: colors.$text-disabled;
+  cursor: none;
 }
 
 .select-container {
