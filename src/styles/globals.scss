@@ -3,15 +3,30 @@
    License: none (public domain)
 */
 
+@use "@/styles/colors";
+
+@font-face {
+  font-family: Ownglyph;
+  src: url("./Ownglyph.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 html,
-body,
+body {
+  font-family: Pretendard, sans-serif;
+}
+
 div,
 span,
 applet,
 object,
 iframe,
 h1 {
+  font-family: Ownglyph, sans-serif;
+  font-weight: normal;
   font-size: 24px;
+  color: colors.$text-sub;
 }
 
 h2 {

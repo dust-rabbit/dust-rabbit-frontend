@@ -1,10 +1,12 @@
 "use client";
 
 import { Form, OnboardingNavbar, MbtiCardContainer, TypeBirthDateStep } from "@/components/shared";
-import { Button } from "@/components/ui";
+import { Button, QuestionBox } from "@/components/ui";
 import { useForm, useFunnel } from "@/hooks";
 import { DEFAULT_FORM, SIGN_UP_STEPS } from "@/lib/const";
 import { SignUpForm, SignUpStep } from "@/type";
+import Image from "next/image";
+import munto from "@/assets/mt-question.png";
 
 export default function Home() {
   const { currentStep, currentStepIndex, goToPreviousStep, goToNextStep } =
@@ -19,7 +21,8 @@ export default function Home() {
         totalSteps={SIGN_UP_STEPS.length}
         goToPreviousStep={goToPreviousStep}
       />
-      <Button onClick={goToNextStep}>increment</Button>
+      <QuestionBox step={currentStep} />
+      <Image src={munto} alt="munto" />
       {currentStep === "성별 선택" && (
         <div className="row">
           <Button onClick={() => handleChange("gender", "여자")}>여자</Button>
@@ -30,12 +33,7 @@ export default function Home() {
       {currentStep === "생년월일 입력" && <TypeBirthDateStep />}
       {currentStep === "출생시간 입력" && <Form />}
       {currentStep === "MBTI 입력" && <MbtiCardContainer />}
-      {currentStep}
-      {/* <div>name: {form.name}</div>
-      <div>gender: {form.gender}</div>
-      <div>birthDate: {form.birthDate}</div>
-      <div>birthTime: {form.birthTime}</div>
-      <div>mbti: {form.mbti}</div> */}
+      <Button onClick={goToNextStep}>다음</Button>
     </>
   );
 }
