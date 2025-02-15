@@ -1,4 +1,4 @@
-import { PageBackButton, ProgressBar, ProgressIndicator } from "@/components/ui";
+import { PageBackButton, ProgressBar } from "@/components/ui";
 import styles from "./styles.module.scss";
 
 interface Props {
@@ -18,7 +18,7 @@ export function OnboardingNavbar({ stepIndex, totalSteps, goToPreviousStep }: Re
         progress={progress}
         maxProgress={totalSteps}
       />
-      <ProgressIndicator current={progress} total={totalSteps} />
+      {/* <ProgressIndicator current={progress} total={totalSteps} /> */}
     </div>
   );
 }

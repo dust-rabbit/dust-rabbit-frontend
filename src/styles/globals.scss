@@ -3,6 +3,8 @@
    License: none (public domain)
 */
 
+@use "@/styles/colors";
+
 html,
 body,
 div,
@@ -11,7 +13,9 @@ applet,
 object,
 iframe,
 h1 {
+  font-weight: normal;
   font-size: 24px;
+  color: colors.$text-sub;
 }
 
 h2 {
@@ -31,7 +35,10 @@ h5 {
 }
 
 h6,
-p,
+p {
+  font-size: 16px;
+}
+
 blockquote,
 pre,
 a,
@@ -123,8 +130,9 @@ section {
 }
 
 body {
-  background-color: white;
+  background-color: colors.$bg-default;
   line-height: 1;
+  padding: 20px;
 }
 
 ol,

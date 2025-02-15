@@ -1,16 +1,18 @@
 "use client";
 
 import { Form, OnboardingNavbar, MbtiCardContainer, TypeBirthDateStep } from "@/components/shared";
-import { Button } from "@/components/ui";
+import { Button, QuestionBox, SelectButtons } from "@/components/ui";
 import { useForm, useFunnel } from "@/hooks";
 import { DEFAULT_FORM, SIGN_UP_STEPS } from "@/lib/const";
 import { SignUpForm, SignUpStep } from "@/type";
+import Image from "next/image";
+import munto from "@/assets/mt-question.png";
 
 export default function Home() {
   const { currentStep, currentStepIndex, goToPreviousStep, goToNextStep } =
     useFunnel<SignUpStep>(SIGN_UP_STEPS);
 
-  const { handleChange } = useForm<SignUpForm>(DEFAULT_FORM);
+  const { form, handleChange } = useForm<SignUpForm>(DEFAULT_FORM);
 
   return (
     <>
@@ -19,23 +21,25 @@ export default function Home() {
         totalSteps={SIGN_UP_STEPS.length}
         goToPreviousStep={goToPreviousStep}
       />
-      <Button onClick={goToNextStep}>increment</Button>
+      <QuestionBox step={currentStep} />
+      <Image src={munto} alt="munto" />
       {currentStep === "성별 선택" && (
-        <div className="row">
-          <Button onClick={() => handleChange("gender", "여자")}>여자</Button>
-          <Button onClick={() => handleChange("gender", "남자")}>남자</Button>
-        </div>
+        <SelectButtons
+          select1="여자"
+          select2="남자"
+          selected={form.gender}
+          onSelect1Click={() => handleChange("gender", "여자")}
+          onSelect2Click={() => handleChange("gender", "남자")}
+          onDuplicateClick={() => handleChange("gender", undefined)}
+        />
       )}
       {currentStep === "이름 입력" && <Form />}
       {currentStep === "생년월일 입력" && <TypeBirthDateStep />}
       {currentStep === "출생시간 입력" && <Form />}
       {currentStep === "MBTI 입력" && <MbtiCardContainer />}
-      {currentStep}
-      {/* <div>name: {form.name}</div>
-      <div>gender: {form.gender}</div>
-      <div>birthDate: {form.birthDate}</div>
-      <div>birthTime: {form.birthTime}</div>
-      <div>mbti: {form.mbti}</div> */}
+      <Button onClick={goToNextStep} direction="bottom">
+        다음
+      </Button>
     </>
   );
 }

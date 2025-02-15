@@ -6,30 +6,94 @@
   justify-content: center;
   border-radius: 8px;
   cursor: pointer;
+  color: colors.$common-white;
+  width: 100%;
+  height: 52px;
 
   &:active {
-    background-color: colors.$button-active; // TODO: 활성화 색상은 뭘로 하지..
+    background-color: colors.$primary-strong;
   }
 }
 
-.default {
+.primary {
   @extend %button;
 
-  background-color: colors.$button-normal;
-  height: 52px;
+  background-color: colors.$primary-normal;
+}
+
+.primary-bottom {
+  @extend %button;
+
+  position: absolute;
+  bottom: 60px;
+  background-color: colors.$primary-normal;
+}
+
+.disabled {
+  @extend %button;
+
+  background-color: colors.$bg-disabled;
+  color: colors.$text-disabled;
+  cursor: none;
+}
+
+.disabled-bottom {
+  @extend %button;
+
+  position: absolute;
+  bottom: 0;
+  background-color: colors.$bg-disabled;
+  color: colors.$text-disabled;
+  cursor: none;
+}
+
+.select-container {
   width: 100%;
+  height: fit-content;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.select {
+  @extend %button;
+
+  justify-content: space-between;
+  padding: 14px 20px;
+  color: colors.$text-disabled;
+  background-color: colors.$bg-light;
+  border: solid 2px colors.$bg-light;
+
+  &:active {
+    background-color: colors.$bg-light;
+  }
+}
+
+.selected {
+  @extend %button;
+
+  justify-content: space-between;
+  padding: 14px 20px;
+  border: solid 2px colors.$primary-strong;
+  color: colors.$primary-normal;
+  background-color: colors.$primary-light;
+  transition: all 0.1s;
+
+  &:active {
+    background-color: colors.$primary-light;
+  }
 }
 
 .go-back {
   @extend %button;
 
-  background-color: colors.$fill-normal;
   height: 40px;
   width: 40px;
 }
 
 .icon {
-  width: 14px;
-  height: 14px;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
 }
