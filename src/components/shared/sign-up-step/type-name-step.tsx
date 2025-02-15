@@ -1,7 +1,4 @@
-"use client";
-
 import { Button, FormInput } from "@/components/ui";
-import { formatBirthDate } from "@/lib/utils";
 import { Controller, useForm } from "react-hook-form";
 import styles from "./styles.module.scss";
 
@@ -12,38 +9,34 @@ type Props = {
 };
 
 type FormValues = {
-  birthDate: string;
+  name: string;
 };
 
-export function TypeBirthDateStep({ onSubmit, value, onNext }: Readonly<Props>) {
+export function TypeNameStep({ onSubmit, value, onNext }: Readonly<Props>) {
   const { control, handleSubmit } = useForm<FormValues>({
     defaultValues: {
-      birthDate: value,
+      name: value,
     },
   });
 
   const onFormSubmit = handleSubmit((data) => {
-    onSubmit(data.birthDate);
+    onSubmit(data.name);
     onNext();
   });
 
   return (
     <form onSubmit={onFormSubmit} className={styles.container}>
       <Controller
-        name="birthDate"
+        name="name"
         control={control}
         render={({ field: { onChange, onBlur, value: fieldValue, ref, name } }) => (
           <FormInput
-            onChange={(e) => {
-              const formatted = formatBirthDate(e.target.value);
-              e.target.value = formatted.slice(0, 10); // 최대 10자리 (YYYY.MM.DD)
-              onChange(e);
-            }}
+            placeholder="이름"
+            onChange={onChange}
             onBlur={onBlur}
             value={fieldValue}
             ref={ref}
             name={name}
-            placeholder="1998.01.01"
           />
         )}
       />
