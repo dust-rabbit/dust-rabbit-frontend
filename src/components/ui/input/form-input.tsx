@@ -4,10 +4,6 @@ import { XButton } from "@/components/ui/button/x-button";
 import { forwardRef, useRef } from "react";
 import styles from "./styles.module.scss";
 
-// TODO: zod로 사용자 입력 검증 추가
-// 현재는 Input만 submit하는 폼입니다. 나중에 여러 정보를 submit하게 되면 보강할 예정
-
-/* eslint-disable react/require-default-props */
 type Props = {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
@@ -15,7 +11,6 @@ type Props = {
   value: string;
   name?: string;
 };
-/* eslint-enable react/require-default-props */
 
 export const FormInput = forwardRef<HTMLInputElement, Props>(
   ({ onChange, onBlur, placeholder, value, name }, ref) => {
