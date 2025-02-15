@@ -10,7 +10,13 @@ export function Form() {
   const [inputValue, setInputValue] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
   return (
-    <form className={styles.default} onSubmit={() => console.log("submitted.")}>
+    <form
+      className={styles.default}
+      onSubmit={(e) => {
+        console.log("submitted.");
+        e.preventDefault();
+      }}
+    >
       <input
         placeholder="이름"
         className={styles.input}
