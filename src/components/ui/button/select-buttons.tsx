@@ -1,34 +1,43 @@
-import UnChecked from "@/assets/checkbox.svg";
 import Checked from "@/assets/checkbox-active.svg";
+import UnChecked from "@/assets/checkbox.svg";
 import styles from "./styles.module.scss";
 
 type SelectButtonProps = {
-  select: string;
+  label: string;
+  value: string;
   selected: string | undefined;
   onSelectClick: () => void;
   onDuplicateClick: () => void;
 };
 
-function SelectButton({ select, selected, onSelectClick, onDuplicateClick }: SelectButtonProps) {
+function SelectButton({
+  label,
+  value,
+  selected,
+  onSelectClick,
+  onDuplicateClick,
+}: Readonly<SelectButtonProps>) {
   return (
     <button
       type="button"
-      className={select === selected ? styles.selected : styles.select}
+      className={value === selected ? styles.selected : styles.select}
       onClick={() => {
-        if (select === selected) onDuplicateClick();
+        if (value === selected) onDuplicateClick();
         else onSelectClick();
       }}
     >
-      <p>{select}</p>
-      {select === selected && <Checked />}
-      {select !== selected && <UnChecked />}
+      <p>{label}</p>
+      {value === selected && <Checked />}
+      {value !== selected && <UnChecked />}
     </button>
   );
 }
 
 type Props = {
-  select1: string;
-  select2: string;
+  select1Value: string;
+  select2Value: string;
+  select1Label?: string;
+  select2Label?: string;
   selected: string | undefined;
   onSelect1Click: () => void;
   onSelect2Click: () => void;
@@ -36,23 +45,27 @@ type Props = {
 };
 
 export function SelectButtons({
-  select1,
-  select2,
+  select1Value,
+  select2Value,
+  select1Label,
+  select2Label,
   selected,
   onSelect1Click,
   onSelect2Click,
   onDuplicateClick,
-}: Props) {
+}: Readonly<Props>) {
   return (
     <div className={styles["select-container"]}>
       <SelectButton
-        select={select1}
+        label={select1Label ?? select1Value}
+        value={select1Value}
         selected={selected}
         onSelectClick={onSelect1Click}
         onDuplicateClick={onDuplicateClick}
       />
       <SelectButton
-        select={select2}
+        label={select2Label ?? select2Value}
+        value={select2Value}
         selected={selected}
         onSelectClick={onSelect2Click}
         onDuplicateClick={onDuplicateClick}

@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useRef } from "react";
 import { XButton } from "@/components/ui";
+import { useRef, useState } from "react";
 import styles from "./styles.module.scss";
 
 // TODO: zod로 사용자 입력 검증 추가
@@ -13,7 +13,6 @@ export function Form() {
     <form
       className={styles.default}
       onSubmit={(e) => {
-        console.log("submitted.");
         e.preventDefault();
       }}
     >

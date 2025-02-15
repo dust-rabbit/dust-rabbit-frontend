@@ -1,0 +1,38 @@
+@use "@/styles/colors";
+
+%form {
+  display: flex;
+  flex-direction: row;
+  place-items: center;
+  justify-content: space-between;
+  border-bottom: solid 2px;
+  border-color: colors.$icon-disabled;
+  outline: none;
+  padding: 4px 0;
+  box-sizing: border-box;
+  width: 100%;
+
+  &:focus-within {
+    border-color: colors.$primary-normal;
+  }
+}
+
+.input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 16px;
+  background-color: inherit;
+}
+
+.default {
+  @extend %form;
+
+  // height: 52px;
+}
+
+.invalid {
+  @extend %form;
+
+  border-color: colors.$common-point;
+}

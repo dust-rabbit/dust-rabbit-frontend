@@ -17,23 +17,18 @@ export function Button({
   direction = "default",
   style,
 }: Readonly<Props>) {
-  if (variant === "primary") {
-    return (
-      <button
-        type="button"
-        className={direction === "bottom" ? styles["primary-bottom"] : styles.primary}
-        style={style}
-        onClick={onClick}
-      >
-        <h5>{children}</h5>
-      </button>
-    );
-  }
+  const getClassName = () => {
+    const baseClass = variant === "primary" ? "primary" : "disabled";
+    return direction === "bottom" ? styles[`${baseClass}-bottom`] : styles[baseClass];
+  };
+
   return (
     <button
       type="button"
-      className={direction === "bottom" ? styles["disabled-bottom"] : styles.disabled}
+      className={getClassName()}
       style={style}
+      onClick={variant === "primary" ? onClick : undefined}
+      disabled={variant === "disabled"}
     >
       <h5>{children}</h5>
     </button>

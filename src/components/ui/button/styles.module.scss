@@ -41,7 +41,7 @@
   @extend %button;
 
   position: absolute;
-  bottom: 0;
+  bottom: 60px;
   background-color: colors.$bg-disabled;
   color: colors.$text-disabled;
   cursor: none;
