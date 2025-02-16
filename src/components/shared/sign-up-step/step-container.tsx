@@ -5,7 +5,7 @@ import {
   TypeBirthDateStep,
   TypeBirthTimeStep,
   TypeNameStep,
-} from ".";
+} from "./step";
 
 type Props = {
   currentStep: SignUpStep;

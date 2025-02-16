@@ -17,8 +17,7 @@
   },
   "rules": {
     "import/prefer-default-export": "off",
-    "react/require-default-props": "off",
-    "import/no-cycle": "off"
+    "react/require-default-props": "off"
   },
   "overrides": [
     {
