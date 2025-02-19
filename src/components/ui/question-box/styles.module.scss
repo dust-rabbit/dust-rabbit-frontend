@@ -1,17 +1,18 @@
 @use "@/styles/colors";
 
 .question-box {
-  width: 100%;
-  // height: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.bubble {
-  position: relative;
+  gap: 0;
+  width: 100%;
+  border-radius: 8px;
+  background-color: colors.$common-white;
+  padding: 10px 0;
+  color: colors.$text-default;
 }
 
 .question {
-  position: absolute;
+  margin: 0;
 }
