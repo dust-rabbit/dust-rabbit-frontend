@@ -20,6 +20,7 @@ export default function SignUp() {
         stepIndex={currentStepIndex}
         totalSteps={SIGN_UP_STEPS.length}
         goToPreviousStep={goToPreviousStep}
+        goToNextStep={goToNextStep}
       />
       <QuestionBox step={currentStep} />
       <Image src={munto} alt="munto" />

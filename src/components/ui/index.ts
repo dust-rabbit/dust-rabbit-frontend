@@ -1,5 +1,6 @@
 export * from "./button/button";
-export * from "./button/page-back-button";
+export * from "./button/back-button";
+export * from "./button/forward-button";
 export * from "./button/select-buttons";
 export * from "./button/x-button";
 export * from "./input/form-input";
