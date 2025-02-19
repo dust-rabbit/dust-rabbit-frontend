@@ -5,9 +5,9 @@ type Props = {
   onClick: () => void;
 };
 
-export function PageBackButton({ onClick }: Readonly<Props>) {
+export function BackButton({ onClick }: Readonly<Props>) {
   return (
-    <button type="button" className={styles["go-back"]} onClick={onClick}>
+    <button type="button" className={styles.back} onClick={onClick}>
       <ChevronLeft />
     </button>
   );

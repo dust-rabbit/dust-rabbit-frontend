@@ -133,6 +133,7 @@ body {
   background-color: colors.$bg-default;
   line-height: 1;
   padding: 20px;
+  margin: 0;
 }
 
 ol,
@@ -159,7 +160,6 @@ table {
 }
 
 button {
-  color: inherit;
   border: none;
   cursor: pointer;
 }
