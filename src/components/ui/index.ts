@@ -6,4 +6,4 @@ export * from "./button/x-button";
 export * from "./input/form-input";
 export * from "./progress-bar/progress-bar";
 export * from "./progress-indicator/progress-indicator";
-export * from "./question-box/question-box";
+export * from "./bubble/bubble";
