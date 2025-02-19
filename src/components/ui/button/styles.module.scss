@@ -97,8 +97,8 @@
     background-color: colors.$bg-light;
   }
 
-  height: 40px;
-  width: 40px;
+  height: 44px;
+  width: 44px;
 }
 
 .forward {
@@ -109,8 +109,9 @@
   }
 
   color: colors.$text-default;
-  height: 40px;
-  width: 40px;
+  height: 44px;
+  min-width: 44px;
+  width: fit-content;
 }
 
 .icon {
