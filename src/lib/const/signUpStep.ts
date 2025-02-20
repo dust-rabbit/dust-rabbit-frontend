@@ -13,6 +13,7 @@ export const DEFAULT_FORM: Readonly<SignUpForm> = {
   gender: undefined,
   name: "",
   birthDate: "",
+  calendarType: "양력",
   birthTime: undefined,
   mbti: "",
 };
