@@ -8,17 +8,20 @@ type Props = {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   placeholder: string;
-  value: string;
+  value?: string;
   name?: string;
+  error?: boolean;
+  errorMessage?: string;
+  disabled?: boolean;
 };
 
 export const FormInput = forwardRef<HTMLInputElement, Props>(
-  ({ onChange, onBlur, placeholder, value, name }, ref) => {
+  ({ onChange, onBlur, placeholder, value = "", name, error, errorMessage, disabled }, ref) => {
     const innerRef = useRef<HTMLInputElement>(null);
     const inputRef = (ref as React.RefObject<HTMLInputElement>) || innerRef;
 
     return (
-      <div className={styles.default}>
+      <div className={`${styles.default} ${error ? styles.invalid : ""}`}>
         <input
           placeholder={placeholder}
           className={styles.input}
@@ -27,6 +30,7 @@ export const FormInput = forwardRef<HTMLInputElement, Props>(
           value={value}
           ref={inputRef}
           name={name}
+          disabled={disabled}
         />
         <XButton
           inputValue={value}
@@ -38,6 +42,7 @@ export const FormInput = forwardRef<HTMLInputElement, Props>(
             inputRef.current?.focus();
           }}
         />
+        {errorMessage && <div className={styles["error-message"]}>{errorMessage}</div>}
       </div>
     );
   },

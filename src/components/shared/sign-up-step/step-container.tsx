@@ -31,8 +31,11 @@ export function StepContainer({ currentStep, form, handleChange, goToNextStep }:
     case "생년월일 입력":
       return (
         <TypeBirthDateStep
-          value={form.birthDate}
-          onSubmit={(value) => handleChange("birthDate", value)}
+          value={{ date: form.birthDate, calendarType: form.calendarType }}
+          onSubmit={(value) => {
+            handleChange("birthDate", value.date);
+            handleChange("calendarType", value.calendarType);
+          }}
           onNext={goToNextStep}
         />
       );

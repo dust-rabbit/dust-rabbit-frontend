@@ -28,11 +28,19 @@
 .default {
   @extend %form;
 
-  // height: 52px;
+  position: relative;
 }
 
 .invalid {
   @extend %form;
 
   border-color: colors.$common-point;
+}
+
+.error-message {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  color: colors.$common-point;
+  font-size: 12px;
 }
