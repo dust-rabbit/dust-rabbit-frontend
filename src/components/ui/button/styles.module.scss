@@ -6,6 +6,7 @@
   justify-content: center;
   border-radius: 8px;
   cursor: pointer;
+  background-color: colors.$bg-default;
   color: colors.$common-white;
   width: 100%;
   height: 52px;
@@ -85,11 +86,32 @@
   }
 }
 
-.go-back {
+.no-margin {
+  margin: 0;
+}
+
+.back {
   @extend %button;
 
-  height: 40px;
-  width: 40px;
+  &:active {
+    background-color: colors.$bg-light;
+  }
+
+  height: 44px;
+  width: 44px;
+}
+
+.forward {
+  @extend %button;
+
+  &:active {
+    background-color: colors.$bg-light;
+  }
+
+  color: colors.$text-default;
+  height: 44px;
+  min-width: 44px;
+  width: fit-content;
 }
 
 .icon {
