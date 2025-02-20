@@ -1,7 +1,9 @@
 "use client";
 
 import { Button, FormInput } from "@/components/ui";
+import { ValidationSchema } from "@/lib/const";
 import { formatBirthTime } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 import styles from "./styles.module.scss";
 
@@ -16,10 +18,15 @@ type FormValues = {
 };
 
 export function TypeBirthTimeStep({ onSubmit, value, onNext }: Readonly<Props>) {
-  const { control, handleSubmit } = useForm<FormValues>({
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValues>({
     defaultValues: {
       birthTime: value,
     },
+    resolver: zodResolver(ValidationSchema.birthTimeStep),
   });
 
   const onFormSubmit = handleSubmit((data) => {
@@ -43,7 +50,9 @@ export function TypeBirthTimeStep({ onSubmit, value, onNext }: Readonly<Props>) 
             value={fieldValue}
             ref={ref}
             name={name}
-            placeholder="00:00"
+            placeholder="13:00"
+            error={!!errors.birthTime?.message}
+            errorMessage={errors.birthTime?.message}
           />
         )}
       />
