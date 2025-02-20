@@ -6,6 +6,7 @@ import { Button, FormInput } from "@/components/ui";
 import { ValidationSchema } from "@/lib/const";
 import { formatBirthTime } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import styles from "./styles.module.scss";
 
@@ -20,11 +21,11 @@ type FormValues = {
 };
 
 export function TypeBirthTimeStep({ onSubmit, value = undefined, onNext }: Readonly<Props>) {
+  const [isUnknownTime, setIsUnknownTime] = useState(false);
   const {
     control,
     handleSubmit,
     setValue,
-    watch,
     formState: { errors },
   } = useForm<FormValues>({
     defaultValues: {
@@ -33,11 +34,8 @@ export function TypeBirthTimeStep({ onSubmit, value = undefined, onNext }: Reado
     resolver: zodResolver(ValidationSchema.birthTimeStep),
   });
 
-  const birthTimeValue = watch("birthTime");
-  const isUnknownTime = birthTimeValue === undefined;
-
   const onFormSubmit = handleSubmit((data) => {
-    onSubmit(data.birthTime);
+    onSubmit(isUnknownTime ? undefined : data.birthTime);
     onNext();
   });
 
@@ -61,16 +59,20 @@ export function TypeBirthTimeStep({ onSubmit, value = undefined, onNext }: Reado
                 name={name}
                 placeholder="13:00"
                 error={!!errors.birthTime?.message}
+                disabled={isUnknownTime}
               />
               <div className={styles["calendar-toggle"]}>
                 <button
                   type="button"
                   className={styles["toggle-button"]}
                   onClick={() => {
-                    setValue("birthTime", isUnknownTime ? "" : undefined);
+                    setIsUnknownTime(!isUnknownTime);
+                    if (!isUnknownTime) {
+                      setValue("birthTime", undefined);
+                    }
                   }}
                 >
-                  {!isUnknownTime ? <Checkbox /> : <ActiveCheckbox />}
+                  {isUnknownTime ? <ActiveCheckbox /> : <Checkbox />}
                   태어난 시간 모름
                 </button>
               </div>

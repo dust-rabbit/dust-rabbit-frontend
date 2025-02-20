@@ -12,10 +12,11 @@ type Props = {
   name?: string;
   error?: boolean;
   errorMessage?: string;
+  disabled?: boolean;
 };
 
 export const FormInput = forwardRef<HTMLInputElement, Props>(
-  ({ onChange, onBlur, placeholder, value = "", name, error, errorMessage }, ref) => {
+  ({ onChange, onBlur, placeholder, value = "", name, error, errorMessage, disabled }, ref) => {
     const innerRef = useRef<HTMLInputElement>(null);
     const inputRef = (ref as React.RefObject<HTMLInputElement>) || innerRef;
 
@@ -29,6 +30,7 @@ export const FormInput = forwardRef<HTMLInputElement, Props>(
           value={value}
           ref={inputRef}
           name={name}
+          disabled={disabled}
         />
         <XButton
           inputValue={value}
