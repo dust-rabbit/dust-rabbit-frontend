@@ -27,6 +27,7 @@ export function SelectGenderStep({ gender, handleChange, onNext }: Readonly<Prop
           onNext();
         }}
         direction="bottom"
+        variant={selectedGender ? "primary" : "disabled"}
       >
         다음
       </Button>

@@ -1,4 +1,6 @@
 import { Button, FormInput } from "@/components/ui";
+import { ValidationSchema } from "@/lib/const";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 import styles from "./styles.module.scss";
 
@@ -13,10 +15,16 @@ type FormValues = {
 };
 
 export function TypeNameStep({ onSubmit, value, onNext }: Readonly<Props>) {
-  const { control, handleSubmit } = useForm<FormValues>({
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValues>({
     defaultValues: {
       name: value,
     },
+    resolver: zodResolver(ValidationSchema.typeName),
+    mode: "onChange",
   });
 
   const onFormSubmit = handleSubmit((data) => {
@@ -37,6 +45,8 @@ export function TypeNameStep({ onSubmit, value, onNext }: Readonly<Props>) {
             value={fieldValue}
             ref={ref}
             name={name}
+            error={!!errors.name?.message}
+            errorMessage={errors.name?.message}
           />
         )}
       />

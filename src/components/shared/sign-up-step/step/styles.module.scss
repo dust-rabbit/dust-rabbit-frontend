@@ -11,3 +11,17 @@
   gap: 1rem;
   width: 100%;
 }
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.calendar-toggle {
+  display: flex;
+  gap: 12px;
+  margin-top: 6px;
+  align-items: center;
+}
