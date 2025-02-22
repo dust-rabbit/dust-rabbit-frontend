@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, CheckButton, FormInput } from "@/components/ui";
+import { CheckButton, FormInput } from "@/components/ui";
 import { ValidationSchema } from "@/lib/const";
 import { formatBirthTime } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -41,7 +41,7 @@ export function TypeBirthTimeStep({ onSubmit, value = undefined, onNext }: Reado
   });
 
   return (
-    <form onSubmit={onFormSubmit} className={styles.container}>
+    <form id="출생시간 입력" onSubmit={onFormSubmit} className={styles.container}>
       <div className={styles["input-container"]}>
         <Controller
           name="birthTime"
@@ -79,9 +79,6 @@ export function TypeBirthTimeStep({ onSubmit, value = undefined, onNext }: Reado
           )}
         />
       </div>
-      <Button onClick={onFormSubmit} direction="bottom">
-        다음
-      </Button>
     </form>
   );
 }
