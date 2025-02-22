@@ -24,6 +24,7 @@ export function TypeNameStep({ onSubmit, value, onNext }: Readonly<Props>) {
       name: value,
     },
     resolver: zodResolver(ValidationSchema.typeName),
+    mode: "onChange",
   });
 
   const onFormSubmit = handleSubmit((data) => {

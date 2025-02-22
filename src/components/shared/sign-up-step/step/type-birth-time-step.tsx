@@ -1,8 +1,6 @@
 "use client";
 
-import ActiveCheckbox from "@/assets/checkbox-active.svg";
-import Checkbox from "@/assets/checkbox.svg";
-import { Button, FormInput } from "@/components/ui";
+import { Button, CheckButton, FormInput } from "@/components/ui";
 import { ValidationSchema } from "@/lib/const";
 import { formatBirthTime } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -32,9 +30,12 @@ export function TypeBirthTimeStep({ onSubmit, value = undefined, onNext }: Reado
       birthTime: value,
     },
     resolver: zodResolver(ValidationSchema.birthTimeStep),
+    mode: "onChange",
   });
 
   const onFormSubmit = handleSubmit((data) => {
+    if (!isUnknownTime && !data.birthTime) return;
+
     onSubmit(isUnknownTime ? undefined : data.birthTime);
     onNext();
   });
@@ -50,8 +51,7 @@ export function TypeBirthTimeStep({ onSubmit, value = undefined, onNext }: Reado
               <FormInput
                 onChange={(e) => {
                   const formatted = formatBirthTime(e.target.value);
-                  e.target.value = formatted.slice(0, 5); // 최대 5자리 (HH:MM)
-                  onChange(e);
+                  onChange(formatted);
                 }}
                 onBlur={onBlur}
                 value={fieldValue ?? ""}
@@ -62,8 +62,8 @@ export function TypeBirthTimeStep({ onSubmit, value = undefined, onNext }: Reado
                 disabled={isUnknownTime}
               />
               <div className={styles["calendar-toggle"]}>
-                <button
-                  type="button"
+                <CheckButton
+                  isChecked={isUnknownTime}
                   className={styles["toggle-button"]}
                   onClick={() => {
                     setIsUnknownTime(!isUnknownTime);
@@ -72,9 +72,8 @@ export function TypeBirthTimeStep({ onSubmit, value = undefined, onNext }: Reado
                     }
                   }}
                 >
-                  {isUnknownTime ? <ActiveCheckbox /> : <Checkbox />}
                   태어난 시간 모름
-                </button>
+                </CheckButton>
               </div>
             </>
           )}
