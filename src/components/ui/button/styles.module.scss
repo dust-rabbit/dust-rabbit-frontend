@@ -112,6 +112,11 @@
   height: 44px;
   min-width: 44px;
   width: fit-content;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 }
 
 .icon {

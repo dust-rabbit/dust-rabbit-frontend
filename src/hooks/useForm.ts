@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 type UseFormReturn<T extends Record<string, string | undefined>> = {
   form: T;
@@ -11,10 +11,12 @@ export const useForm = <T extends Record<string, string | undefined>>(
 ): UseFormReturn<T> => {
   const [form, setForm] = useState<T>(initialForm);
 
-  const handleChange = (key: keyof T, value: string | undefined) => {
-    setForm((prev) => ({ ...prev, [key]: value }));
-  };
-
+  const handleChange = useCallback(
+    (key: keyof T, value: string | undefined) => {
+      setForm((prev) => ({ ...prev, [key]: value }));
+    },
+    [setForm],
+  );
 
   return {
     form,

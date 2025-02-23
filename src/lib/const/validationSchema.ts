@@ -26,15 +26,15 @@ export const ValidationSchema = {
     calendarType: z.enum(["양력", "음력"]),
   }),
   birthTimeStep: z.object({
-    birthTime: z.union([
-      z.undefined(),
-      z
-        .string()
-        .min(5, "시간을 입력해주세요")
-        .refine((time) => {
-          const [hours, minutes] = time.split(":").map(Number);
-          return hours >= 0 && hours <= 23 && minutes >= 0 && minutes <= 59;
-        }, "올바른 시간을 입력해주세요."),
-    ]),
+    birthTime: z
+      .string()
+      .min(5, "시간을 입력해주세요")
+      .refine((time) => {
+        const [hour, minute] = time.split(":").map(Number);
+        return hour >= 0 && hour <= 23 && minute >= 0 && minute <= 59;
+      }, "올바른 시간을 입력해주세요"),
+  }),
+  unknownBirthTimeStep: z.object({
+    birthTime: z.string().optional(),
   }),
 };

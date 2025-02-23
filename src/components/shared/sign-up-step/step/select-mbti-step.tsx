@@ -3,14 +3,16 @@
 import { SelectButtons } from "@/components/ui";
 import { MBTI_BUTTONS } from "@/lib/const";
 import { MbtiState, SignUpForm } from "@/type";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 
 type Props = {
   handleChange: (key: keyof SignUpForm, value: string) => void;
+  formRef: React.RefObject<HTMLFormElement | null>;
+  setIsFormValid: (isValid: boolean) => void;
 };
 
-export function SelectMbtiStep({ handleChange }: Readonly<Props>) {
+export function SelectMbtiStep({ handleChange, formRef, setIsFormValid }: Readonly<Props>) {
   const [typeM, setTypeM] = useState<MbtiState>(undefined);
   const [typeB, setTypeB] = useState<MbtiState>(undefined);
   const [typeT, setTypeT] = useState<MbtiState>(undefined);
@@ -33,8 +35,12 @@ export function SelectMbtiStep({ handleChange }: Readonly<Props>) {
     handleChange("mbti", mbti);
   };
 
+  useEffect(() => {
+    setIsFormValid(!!typeM && !!typeB && !!typeT && !!typeI);
+  }, [typeM, typeB, typeT, typeI, setIsFormValid]);
+
   return (
-    <form id="MBTI 입력" className={styles["mbti-container"]} onSubmit={onSubmit}>
+    <form ref={formRef} className={styles["mbti-container"]} onSubmit={onSubmit}>
       {MBTI_BUTTONS.map((button) => {
         const [selected, setSelected] = mbtiStates[button.type];
         return (

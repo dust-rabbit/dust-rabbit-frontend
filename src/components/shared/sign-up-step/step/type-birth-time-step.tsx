@@ -4,7 +4,7 @@ import { CheckButton, FormInput } from "@/components/ui";
 import { ValidationSchema } from "@/lib/const";
 import { formatBirthTime } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import styles from "./styles.module.scss";
 
@@ -12,24 +12,34 @@ type Props = {
   onSubmit: (value: string | undefined) => void;
   value: string | undefined;
   onNext: () => void;
+  formRef: React.RefObject<HTMLFormElement | null>;
+  setIsFormValid: (isValid: boolean) => void;
 };
 
 type FormValues = {
   birthTime?: string;
 };
 
-export function TypeBirthTimeStep({ onSubmit, value = undefined, onNext }: Readonly<Props>) {
+export function TypeBirthTimeStep({
+  onSubmit,
+  value = undefined,
+  onNext,
+  formRef,
+  setIsFormValid,
+}: Readonly<Props>) {
   const [isUnknownTime, setIsUnknownTime] = useState(false);
   const {
     control,
     handleSubmit,
     setValue,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<FormValues>({
     defaultValues: {
       birthTime: value,
     },
-    resolver: zodResolver(ValidationSchema.birthTimeStep),
+    resolver: zodResolver(
+      isUnknownTime ? ValidationSchema.unknownBirthTimeStep : ValidationSchema.birthTimeStep,
+    ),
     mode: "onChange",
   });
 
@@ -40,8 +50,12 @@ export function TypeBirthTimeStep({ onSubmit, value = undefined, onNext }: Reado
     onNext();
   });
 
+  useEffect(() => {
+    setIsFormValid(isUnknownTime ? true : isValid);
+  }, [isUnknownTime, isValid, setIsFormValid]);
+
   return (
-    <form id="출생시간 입력" onSubmit={onFormSubmit} className={styles.container}>
+    <form ref={formRef} onSubmit={onFormSubmit} className={styles.container}>
       <div className={styles["input-container"]}>
         <Controller
           name="birthTime"

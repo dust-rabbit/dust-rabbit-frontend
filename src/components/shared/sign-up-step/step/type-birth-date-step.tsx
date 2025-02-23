@@ -5,25 +5,34 @@ import { ValidationSchema } from "@/lib/const";
 import { formatBirthDate } from "@/lib/utils";
 import { CalendarType } from "@/type";
 import { zodResolver } from "@hookform/resolvers/zod";
+import React, { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import styles from "./styles.module.scss";
 
-type Props = {
-  onSubmit: (value: { date: string; calendarType: CalendarType }) => void;
+interface Props {
   value: { date: string; calendarType: CalendarType };
+  onSubmit: (value: { date: string; calendarType: CalendarType }) => void;
   onNext: () => void;
-};
+  formRef: React.RefObject<HTMLFormElement | null>;
+  setIsFormValid: (isValid: boolean) => void;
+}
 
 type FormValues = {
   birthDate: string;
   calendarType: CalendarType;
 };
 
-export function TypeBirthDateStep({ onSubmit, value, onNext }: Readonly<Props>) {
+export function TypeBirthDateStep({
+  onSubmit,
+  value,
+  onNext,
+  formRef,
+  setIsFormValid,
+}: Readonly<Props>) {
   const {
     control,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<FormValues>({
     defaultValues: {
       birthDate: value.date,
@@ -33,13 +42,17 @@ export function TypeBirthDateStep({ onSubmit, value, onNext }: Readonly<Props>) 
     mode: "onChange",
   });
 
+  useEffect(() => {
+    setIsFormValid(isValid);
+  }, [isValid, setIsFormValid]);
+
   const onFormSubmit = handleSubmit((data) => {
     onSubmit({ date: data.birthDate, calendarType: data.calendarType });
     onNext();
   });
 
   return (
-    <form id="생년월일 입력" onSubmit={onFormSubmit} className={styles.container}>
+    <form ref={formRef} onSubmit={onFormSubmit} className={styles.container}>
       <div className={styles["input-container"]}>
         <Controller
           name="birthDate"
