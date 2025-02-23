@@ -1,5 +1,5 @@
 import { BackButton, ForwardButton, ProgressBar } from "@/components/ui";
-import { submitIdForm } from "@/lib/utils";
+import { submitRefForm } from "@/lib/utils";
 import styles from "./styles.module.scss";
 
 interface Props {
@@ -24,7 +24,7 @@ export function OnboardingNavbar({
       <div className={styles["back-forward-container"]}>
         {stepIndex === 0 && <div />}
         {stepIndex > 0 && <BackButton onClick={goToPreviousStep} />}
-        <ForwardButton onClick={() => submitIdForm(formRef)} disabled={!isFormValid} />
+        <ForwardButton onClick={() => submitRefForm(formRef)} disabled={!isFormValid} />
       </div>
       <ProgressBar
         className={styles["progress-bar"]}

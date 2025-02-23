@@ -1,6 +1,6 @@
 import React from "react";
 
-export const submitIdForm = (formRef: React.RefObject<HTMLFormElement | null>) => {
+export const submitRefForm = (formRef: React.RefObject<HTMLFormElement | null>) => {
   if (formRef?.current) {
     formRef.current.requestSubmit();
   } else {
