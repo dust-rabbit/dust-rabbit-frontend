@@ -1,6 +1,7 @@
-import { Button, FormInput } from "@/components/ui";
+import { FormInput } from "@/components/ui";
 import { ValidationSchema } from "@/lib/const";
 import { zodResolver } from "@hookform/resolvers/zod";
+import React, { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import styles from "./styles.module.scss";
 
@@ -8,17 +9,25 @@ type Props = {
   onSubmit: (value: string) => void;
   value: string;
   onNext: () => void;
+  formRef: React.RefObject<HTMLFormElement | null>;
+  setIsFormValid: (isValid: boolean) => void;
 };
 
 type FormValues = {
   name: string;
 };
 
-export function TypeNameStep({ onSubmit, value, onNext }: Readonly<Props>) {
+export function TypeNameStep({
+  onSubmit,
+  value,
+  onNext,
+  formRef,
+  setIsFormValid,
+}: Readonly<Props>) {
   const {
     control,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<FormValues>({
     defaultValues: {
       name: value,
@@ -27,13 +36,17 @@ export function TypeNameStep({ onSubmit, value, onNext }: Readonly<Props>) {
     mode: "onChange",
   });
 
+  useEffect(() => {
+    setIsFormValid(isValid);
+  }, [isValid, setIsFormValid]);
+
   const onFormSubmit = handleSubmit((data) => {
     onSubmit(data.name);
     onNext();
   });
 
   return (
-    <form id="이름 입력" onSubmit={onFormSubmit} className={styles.container}>
+    <form ref={formRef} onSubmit={onFormSubmit} className={styles.container}>
       <Controller
         name="name"
         control={control}
@@ -50,9 +63,6 @@ export function TypeNameStep({ onSubmit, value, onNext }: Readonly<Props>) {
           />
         )}
       />
-      <Button onClick={onFormSubmit} direction="bottom">
-        다음
-      </Button>
     </form>
   );
 }

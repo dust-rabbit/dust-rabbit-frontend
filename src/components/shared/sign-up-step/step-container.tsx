@@ -1,4 +1,5 @@
 import { SignUpForm, SignUpStep } from "@/type";
+import { memo } from "react";
 import {
   SelectGenderStep,
   SelectMbtiStep,
@@ -7,14 +8,23 @@ import {
   TypeNameStep,
 } from "./step";
 
-type Props = {
+interface Props {
   currentStep: SignUpStep;
   form: SignUpForm;
   handleChange: (key: keyof SignUpForm, value: SignUpForm[keyof SignUpForm]) => void;
   goToNextStep: () => void;
-};
+  formRef: React.RefObject<HTMLFormElement | null>;
+  setIsFormValid: (isValid: boolean) => void;
+}
 
-export function StepContainer({ currentStep, form, handleChange, goToNextStep }: Readonly<Props>) {
+function StepContainerBase({
+  currentStep,
+  form,
+  handleChange,
+  goToNextStep,
+  formRef,
+  setIsFormValid,
+}: Readonly<Props>) {
   switch (currentStep) {
     case "이름 입력":
       return (
@@ -22,11 +32,19 @@ export function StepContainer({ currentStep, form, handleChange, goToNextStep }:
           value={form.name}
           onSubmit={(value) => handleChange("name", value)}
           onNext={goToNextStep}
+          formRef={formRef}
+          setIsFormValid={setIsFormValid}
         />
       );
     case "성별 선택":
       return (
-        <SelectGenderStep gender={form.gender} handleChange={handleChange} onNext={goToNextStep} />
+        <SelectGenderStep
+          gender={form.gender}
+          handleChange={handleChange}
+          onNext={goToNextStep}
+          formRef={formRef}
+          setIsFormValid={setIsFormValid}
+        />
       );
     case "생년월일 입력":
       return (
@@ -37,6 +55,8 @@ export function StepContainer({ currentStep, form, handleChange, goToNextStep }:
             handleChange("calendarType", value.calendarType);
           }}
           onNext={goToNextStep}
+          formRef={formRef}
+          setIsFormValid={setIsFormValid}
         />
       );
     case "출생시간 입력":
@@ -45,11 +65,21 @@ export function StepContainer({ currentStep, form, handleChange, goToNextStep }:
           value={form.birthTime}
           onSubmit={(value) => handleChange("birthTime", value)}
           onNext={goToNextStep}
+          formRef={formRef}
+          setIsFormValid={setIsFormValid}
         />
       );
     case "MBTI 입력":
-      return <SelectMbtiStep handleChange={handleChange} />;
+      return (
+        <SelectMbtiStep
+          handleChange={handleChange}
+          formRef={formRef}
+          setIsFormValid={setIsFormValid}
+        />
+      );
     default:
       return null;
   }
 }
+
+export const StepContainer = memo(StepContainerBase);
