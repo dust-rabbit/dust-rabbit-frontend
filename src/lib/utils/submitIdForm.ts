@@ -1,7 +1,8 @@
-export const submitIdForm = (formId: string) => {
-  const formElement = document.getElementById(formId) as HTMLFormElement;
-  if (formElement) {
-    formElement.requestSubmit();
+import React from "react";
+
+export const submitIdForm = (formRef: React.RefObject<HTMLFormElement | null>) => {
+  if (formRef?.current) {
+    formRef.current.requestSubmit();
   } else {
     throw new Error("Form element not found");
   }
