@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, CheckButton, FormInput } from "@/components/ui";
+import { CheckButton, FormInput } from "@/components/ui";
 import { ValidationSchema } from "@/lib/const";
 import { formatBirthDate } from "@/lib/utils";
 import { CalendarType } from "@/type";
@@ -39,7 +39,7 @@ export function TypeBirthDateStep({ onSubmit, value, onNext }: Readonly<Props>) 
   });
 
   return (
-    <form onSubmit={onFormSubmit} className={styles.container}>
+    <form id="생년월일 입력" onSubmit={onFormSubmit} className={styles.container}>
       <div className={styles["input-container"]}>
         <Controller
           name="birthDate"
@@ -80,9 +80,6 @@ export function TypeBirthDateStep({ onSubmit, value, onNext }: Readonly<Props>) 
           />
         </div>
       </div>
-      <Button onClick={onFormSubmit} direction="bottom">
-        다음
-      </Button>
     </form>
   );
 }

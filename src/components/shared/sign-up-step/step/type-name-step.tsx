@@ -33,7 +33,7 @@ export function TypeNameStep({ onSubmit, value, onNext }: Readonly<Props>) {
   });
 
   return (
-    <form onSubmit={onFormSubmit} className={styles.container}>
+    <form id="이름 입력" onSubmit={onFormSubmit} className={styles.container}>
       <Controller
         name="name"
         control={control}
