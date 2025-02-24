@@ -1,7 +1,8 @@
 import { FormInput } from "@/components/ui";
+import { useFormContext } from "@/hooks";
 import { ValidationSchema } from "@/lib/const";
 import { zodResolver } from "@hookform/resolvers/zod";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import styles from "./styles.module.scss";
 
@@ -9,21 +10,14 @@ type Props = {
   onSubmit: (value: string) => void;
   value: string;
   onNext: () => void;
-  formRef: React.RefObject<HTMLFormElement | null>;
-  setIsFormValid: (isValid: boolean) => void;
 };
 
 type FormValues = {
   name: string;
 };
 
-export function TypeNameStep({
-  onSubmit,
-  value,
-  onNext,
-  formRef,
-  setIsFormValid,
-}: Readonly<Props>) {
+export function TypeNameStep({ onSubmit, value, onNext }: Readonly<Props>) {
+  const { currentStepFormRef, setIsFormValid } = useFormContext();
   const {
     control,
     handleSubmit,
@@ -46,7 +40,7 @@ export function TypeNameStep({
   });
 
   return (
-    <form ref={formRef} onSubmit={onFormSubmit} className={styles.container}>
+    <form ref={currentStepFormRef} onSubmit={onFormSubmit} className={styles.container}>
       <Controller
         name="name"
         control={control}
