@@ -1,5 +1,5 @@
 {
-  "plugins": ["import", "jsx-a11y", "react", "react-hooks"],
+  "plugins": ["import", "jsx-a11y", "react", "react-hooks", "@tanstack/query"],
   "extends": [
     "plugin:import/recommended",
     "plugin:jsx-a11y/recommended",

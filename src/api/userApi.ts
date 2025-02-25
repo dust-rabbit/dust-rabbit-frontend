@@ -8,9 +8,7 @@ const onboardUser: OnboardUserApi = async ({ onboardingInfo }) => {
 
 const login: LoginApi = async ({ loginInfo }) => {
   const response = await axios.post("/user/login", loginInfo);
-  if (response.status === 200) {
-    return response.data;
-  }
+  if (response.status === 200) return response.data;
   return response.status;
 };
 
