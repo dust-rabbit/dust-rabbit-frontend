@@ -1,6 +1,7 @@
 import { SelectButtons } from "@/components/ui";
+import { useFormContext } from "@/hooks";
 import { Gender, SignUpForm } from "@/type";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 
 type Props = {
@@ -10,6 +11,7 @@ type Props = {
 };
 
 export function SelectGenderStep({ gender, handleChange, onNext }: Readonly<Props>) {
+  const { currentStepFormRef, setIsFormValid } = useFormContext();
   const [selectedGender, setSelectedGender] = useState<Gender | undefined>(gender);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -20,8 +22,12 @@ export function SelectGenderStep({ gender, handleChange, onNext }: Readonly<Prop
     onNext();
   };
 
+  useEffect(() => {
+    setIsFormValid(!!selectedGender);
+  }, [selectedGender, setIsFormValid]);
+
   return (
-    <form id="성별 선택" className={styles.container} onSubmit={onSubmit}>
+    <form ref={currentStepFormRef} className={styles.container} onSubmit={onSubmit}>
       <SelectButtons
         select1Value="여자"
         select2Value="남자"

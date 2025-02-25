@@ -1,10 +1,11 @@
 "use client";
 
 import { CheckButton, FormInput } from "@/components/ui";
+import { useFormContext } from "@/hooks";
 import { ValidationSchema } from "@/lib/const";
 import { formatBirthTime } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import styles from "./styles.module.scss";
 
@@ -19,17 +20,20 @@ type FormValues = {
 };
 
 export function TypeBirthTimeStep({ onSubmit, value = undefined, onNext }: Readonly<Props>) {
+  const { currentStepFormRef, setIsFormValid } = useFormContext();
   const [isUnknownTime, setIsUnknownTime] = useState(false);
   const {
     control,
     handleSubmit,
     setValue,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<FormValues>({
     defaultValues: {
       birthTime: value,
     },
-    resolver: zodResolver(ValidationSchema.birthTimeStep),
+    resolver: zodResolver(
+      isUnknownTime ? ValidationSchema.unknownBirthTimeStep : ValidationSchema.birthTimeStep,
+    ),
     mode: "onChange",
   });
 
@@ -40,44 +44,41 @@ export function TypeBirthTimeStep({ onSubmit, value = undefined, onNext }: Reado
     onNext();
   });
 
+  useEffect(() => {
+    setIsFormValid(isUnknownTime ? true : isValid);
+  }, [isUnknownTime, isValid, setIsFormValid]);
+
   return (
-    <form id="출생시간 입력" onSubmit={onFormSubmit} className={styles.container}>
+    <form ref={currentStepFormRef} onSubmit={onFormSubmit} className={styles.container}>
       <div className={styles["input-container"]}>
         <Controller
           name="birthTime"
           control={control}
           render={({ field: { onChange, onBlur, value: fieldValue, ref, name } }) => (
-            <>
-              <FormInput
-                onChange={(e) => {
-                  const formatted = formatBirthTime(e.target.value);
-                  onChange(formatted);
-                }}
-                onBlur={onBlur}
-                value={fieldValue ?? ""}
-                ref={ref}
-                name={name}
-                placeholder="13:00"
-                error={!!errors.birthTime?.message}
-                disabled={isUnknownTime}
-              />
-              <div className={styles["calendar-toggle"]}>
-                <CheckButton
-                  isChecked={isUnknownTime}
-                  className={styles["toggle-button"]}
-                  onClick={() => {
-                    setIsUnknownTime(!isUnknownTime);
-                    if (!isUnknownTime) {
-                      setValue("birthTime", undefined);
-                    }
-                  }}
-                >
-                  태어난 시간 모름
-                </CheckButton>
-              </div>
-            </>
+            <FormInput
+              onChange={(e) => {
+                const formatted = formatBirthTime(e.target.value);
+                onChange(formatted);
+              }}
+              onBlur={onBlur}
+              value={fieldValue}
+              ref={ref}
+              name={name}
+              placeholder="12:00"
+              error={!!errors.birthTime?.message}
+              disabled={isUnknownTime}
+            />
           )}
         />
+        <CheckButton
+          isChecked={isUnknownTime}
+          onClick={() => {
+            setIsUnknownTime((prev) => !prev);
+            setValue("birthTime", "");
+          }}
+        >
+          태어난 시간 모름
+        </CheckButton>
       </div>
     </form>
   );

@@ -1,4 +1,5 @@
 import { SignUpForm, SignUpStep } from "@/type";
+import { memo } from "react";
 import {
   SelectGenderStep,
   SelectMbtiStep,
@@ -14,7 +15,7 @@ type Props = {
   goToNextStep: () => void;
 };
 
-export function StepContainer({ currentStep, form, handleChange, goToNextStep }: Readonly<Props>) {
+function StepContainerBase({ currentStep, form, handleChange, goToNextStep }: Readonly<Props>) {
   switch (currentStep) {
     case "이름 입력":
       return (
@@ -53,3 +54,5 @@ export function StepContainer({ currentStep, form, handleChange, goToNextStep }:
       return null;
   }
 }
+
+export const StepContainer = memo(StepContainerBase);
