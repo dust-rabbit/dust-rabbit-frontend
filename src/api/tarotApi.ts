@@ -1,7 +1,7 @@
 import { axios } from "@/lib/axios/axios";
 import { GetDailyTarotApi, PostDailyTarotApi } from "@/type/api/tarot";
 
-const getDailyTarot: GetDailyTarotApi = async ({ date }) => {
+const getDailyTarot: GetDailyTarotApi = async (date) => {
   const response = await axios.get(`/daily/tarot/${date}`);
   return response.status;
 };

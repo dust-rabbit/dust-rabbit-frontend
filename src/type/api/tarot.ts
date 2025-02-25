@@ -1,9 +1,7 @@
 import { Fortune } from "@/type/fortune";
 
-export type GetDailyTarotApiParams = {
-  date: string;
-};
-export type GetDailyTarotApi = ({ date }: GetDailyTarotApiParams) => Promise<number>;
+export type GetDailyTarotApiParams = string;
+export type GetDailyTarotApi = (date: GetDailyTarotApiParams) => Promise<number>;
 
 export type PostDailyTarotApiParams = {
   tarot1: number;
