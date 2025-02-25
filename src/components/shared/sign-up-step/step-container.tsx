@@ -8,12 +8,12 @@ import {
   TypeNameStep,
 } from "./step";
 
-interface Props {
+type Props = {
   currentStep: SignUpStep;
   form: SignUpForm;
   handleChange: (key: keyof SignUpForm, value: SignUpForm[keyof SignUpForm]) => void;
   goToNextStep: () => void;
-}
+};
 
 function StepContainerBase({ currentStep, form, handleChange, goToNextStep }: Readonly<Props>) {
   switch (currentStep) {

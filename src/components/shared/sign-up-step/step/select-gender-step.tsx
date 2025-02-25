@@ -4,11 +4,11 @@ import { Gender, SignUpForm } from "@/type";
 import React, { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 
-interface Props {
+type Props = {
   gender: Gender | undefined;
   handleChange: (key: keyof SignUpForm, value: Gender | undefined) => void;
   onNext: () => void;
-}
+};
 
 export function SelectGenderStep({ gender, handleChange, onNext }: Readonly<Props>) {
   const { currentStepFormRef, setIsFormValid } = useFormContext();

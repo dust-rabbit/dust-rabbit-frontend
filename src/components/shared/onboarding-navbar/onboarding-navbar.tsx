@@ -3,11 +3,11 @@ import { useFormContext } from "@/hooks";
 import { submitRefForm } from "@/lib/utils";
 import styles from "./styles.module.scss";
 
-interface Props {
+type Props = {
   stepIndex: number;
   totalSteps: number;
   goToPreviousStep: () => void;
-}
+};
 
 export function OnboardingNavbar({ stepIndex, totalSteps, goToPreviousStep }: Readonly<Props>) {
   const { currentStepFormRef, isFormValid } = useFormContext();

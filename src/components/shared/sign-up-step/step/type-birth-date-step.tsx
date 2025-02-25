@@ -10,11 +10,11 @@ import { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import styles from "./styles.module.scss";
 
-interface Props {
+type Props = {
   value: { date: string; calendarType: CalendarType };
   onSubmit: (value: { date: string; calendarType: CalendarType }) => void;
   onNext: () => void;
-}
+};
 
 type FormValues = {
   birthDate: string;
