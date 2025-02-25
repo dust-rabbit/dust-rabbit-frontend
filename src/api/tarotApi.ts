@@ -1,4 +1,4 @@
-import { axios } from "@/lib/axios/axios";
+import { axios } from "@/lib/axios";
 import { GetDailyTarotApi, PostDailyTarotApi } from "@/type/api/tarot";
 
 const getDailyTarot: GetDailyTarotApi = async (date) => {

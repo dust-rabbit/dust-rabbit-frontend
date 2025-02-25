@@ -1,4 +1,4 @@
-import { axios } from "@/lib/axios/axios";
+import { axios } from "@/lib/axios";
 import { OnboardUserApi, LoginApi, DeleteUserApi } from "@/type/api/user";
 
 const onboardUser: OnboardUserApi = async (onboardingInfo) => {
