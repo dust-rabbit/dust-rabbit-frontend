@@ -3,7 +3,7 @@ import { GetDailyTarotApi, PostDailyTarotApi } from "@/type/api/tarot";
 
 const getDailyTarot: GetDailyTarotApi = async (date) => {
   const response = await axios.get(`/daily/tarot/${date}`);
-  return response.status;
+  return response.data;
 };
 
 const postDailyTarot: PostDailyTarotApi = async ({ tarot1, tarot2, tarot3 }) => {
