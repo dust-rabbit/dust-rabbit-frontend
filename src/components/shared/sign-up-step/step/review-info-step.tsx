@@ -1,7 +1,7 @@
 "use client";
 
 import { SignUpForm } from "@/type";
-import { Button } from "@/components/ui";
+import { Button, Bubble } from "@/components/ui";
 import munto from "@/assets/mt-question.png";
 import Image from "next/image";
 import styles from "./styles.module.scss";
@@ -38,19 +38,19 @@ export function ReviewInfoStep({ form }: Readonly<Props>) {
   const birth = `${birthDate[0]}년 ${Number(birthDate[1])}월 ${Number(birthDate[2])}일${form.birthTime ? ` ${form.birthTime}` : ""}`;
   const { mbti } = form;
   const personality = PERSONALITY[mbti as keyof typeof PERSONALITY];
+  const speech = [
+    `반가워요 ${name}!`,
+    "저는 점 봐주는 토끼, 점토에요.",
+    `${birth}에 태어나셨군요.`,
+    `${mbti}라니`,
+    `${personality}을 지니셨겠어요.`,
+    `제가 ${name}을 제대로 이해했나요?`,
+    "시작하기 버튼을 누르면 매일 운세를 봐드릴게요.",
+  ];
 
   return (
     <div className={styles.container}>
-      <span>
-        <p>반가워요 {name}!</p>
-        <p>저는 점 봐주는 토끼, 점토에요.</p>
-        <p>{birth}에 태어나셨군요.</p>
-        <p>
-          {mbti}라니 {personality}을 지니셨겠어요.
-        </p>
-        <p>제가 {name}을 제대로 이해했나요?</p>
-        <p>시작하기 버튼을 누르면 매일 운세를 봐드릴게요.</p>
-      </span>
+      <Bubble speech={speech} withTail />
       <Image src={munto} alt="munto" />
       <Button>시작하기</Button>
     </div>
