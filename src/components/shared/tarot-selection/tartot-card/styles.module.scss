@@ -1,0 +1,38 @@
+@use "@/styles/colors";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  // button(52px) 높이 제외
+  height: calc(100% - 52px);
+}
+
+.munto-img {
+  margin-top: 100px;
+}
+
+.tarot-card-deck-container {
+  flex-grow: 1;
+  width: 100%;
+}
+
+.selected-cards-slot-container {
+  flex-grow: 1;
+  width: 100%;
+
+  .empty-card-slot {
+    display: flex;
+    justify-content: space-evenly;
+
+    .empty-card {
+      width: 64px;
+      height: 110px;
+      background-color: colors.$bg-disabled;
+      border-radius: 8px;
+      border: solid 2px colors.$primary-medium;
+    }
+  }
+}
