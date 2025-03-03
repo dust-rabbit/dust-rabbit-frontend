@@ -26,7 +26,7 @@
   @extend %button;
 
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   background-color: colors.$primary-normal;
 }
 
@@ -130,6 +130,7 @@
   display: flex;
   gap: 4px;
   align-items: center;
+  color: colors.$text-default;
   cursor: pointer;
   border: none;
   background: none;

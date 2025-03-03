@@ -2,7 +2,7 @@
 
 import { SignUpForm } from "@/type";
 import { Button, Bubble } from "@/components/ui";
-import munto from "@/assets/mt-question.png";
+import munto from "@/assets/mt-shadow.png";
 import Image from "next/image";
 import styles from "./styles.module.scss";
 
