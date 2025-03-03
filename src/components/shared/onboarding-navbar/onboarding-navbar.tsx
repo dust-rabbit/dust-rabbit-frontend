@@ -18,14 +18,19 @@ export function OnboardingNavbar({ stepIndex, totalSteps, goToPreviousStep }: Re
       <div className={styles["back-forward-container"]}>
         {stepIndex === 0 && <div />}
         {stepIndex > 0 && <BackButton onClick={goToPreviousStep} />}
-        <ForwardButton onClick={() => submitRefForm(currentStepFormRef)} disabled={!isFormValid} />
+        {stepIndex < totalSteps - 1 && (
+          <ForwardButton
+            onClick={() => submitRefForm(currentStepFormRef)}
+            disabled={!isFormValid}
+          />
+        )}
+        {stepIndex === totalSteps && <div />}
       </div>
       <ProgressBar
         className={styles["progress-bar"]}
         progress={progress}
         maxProgress={totalSteps}
       />
-      {/* <ProgressIndicator current={progress} total={totalSteps} /> */}
     </div>
   );
 }
