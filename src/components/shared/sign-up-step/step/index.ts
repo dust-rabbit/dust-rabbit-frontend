@@ -3,3 +3,4 @@ export * from "./select-mbti-step";
 export * from "./type-birth-date-step";
 export * from "./type-birth-time-step";
 export * from "./type-name-step";
+export * from "./review-info-step";

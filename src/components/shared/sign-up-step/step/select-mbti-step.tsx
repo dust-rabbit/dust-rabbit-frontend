@@ -9,9 +9,10 @@ import styles from "./styles.module.scss";
 
 type Props = {
   handleChange: (key: keyof SignUpForm, value: string) => void;
+  onNext: () => void;
 };
 
-export function SelectMbtiStep({ handleChange }: Readonly<Props>) {
+export function SelectMbtiStep({ handleChange, onNext }: Readonly<Props>) {
   const { currentStepFormRef, setIsFormValid } = useFormContext();
   const [typeM, setTypeM] = useState<MbtiState>(undefined);
   const [typeB, setTypeB] = useState<MbtiState>(undefined);
@@ -33,6 +34,7 @@ export function SelectMbtiStep({ handleChange }: Readonly<Props>) {
 
     const mbti = `${typeM}${typeB}${typeT}${typeI}`;
     handleChange("mbti", mbti);
+    onNext();
   };
 
   useEffect(() => {
