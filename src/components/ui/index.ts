@@ -8,3 +8,6 @@ export * from "./progress-bar/progress-bar";
 export * from "./progress-indicator/progress-indicator";
 export * from "./bubble/bubble";
 export * from "./button/check-button";
+export * from "./button/social-login-button";
+export * from "./logo/logo";
+export * from "./divider/divider";

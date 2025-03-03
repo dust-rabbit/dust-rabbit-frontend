@@ -2,8 +2,7 @@
 
 .layout {
   max-width: 430px;
-  height: auto; // 하단 고정 버튼을 위해 추가
-  padding-bottom: 80px; // 하단 고정 버튼을 추가
+  height: auto;
   margin: 0 auto;
   gap: 20px;
   background-color: colors.$bg-default;

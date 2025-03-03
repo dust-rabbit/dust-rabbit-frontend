@@ -5,7 +5,6 @@ import { Button, Bubble } from "@/components/ui";
 import munto from "@/assets/mt-shadow.png";
 import Image from "next/image";
 import { PERSONALITY } from "@/lib/const";
-import styles from "./styles.module.scss";
 
 type Props = {
   form: SignUpForm;
@@ -30,10 +29,10 @@ export function ReviewInfoStep({ form }: Readonly<Props>) {
   ];
 
   return (
-    <div className={styles.container}>
+    <div className="bottom-spaced-container">
       <Bubble speech={speech} withTail />
       <Image src={munto} alt="munto" />
-      <Button direction="bottom">시작하기</Button>
+      <Button>시작하기</Button>
     </div>
   );
 }

@@ -1,0 +1,28 @@
+@use "@/styles/colors";
+
+.social-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 10px 0;
+  gap: 3px;
+}
+
+.social-divider {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  min-width: 100%;
+}
+
+.social-text {
+  white-space: nowrap;
+  font-family: sans-serif; // TODO: pretendard
+  font-size: 14px;
+  margin: 0;
+  padding: 0 10px;
+  color: colors.$text-info;
+}

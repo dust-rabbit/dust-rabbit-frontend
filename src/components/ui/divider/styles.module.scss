@@ -1,0 +1,6 @@
+@use "@/styles/colors";
+
+.divider {
+  background-color: colors.$text-info;
+  width: 100%;
+}
