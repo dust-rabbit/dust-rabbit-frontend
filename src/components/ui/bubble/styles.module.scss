@@ -23,11 +23,9 @@
   padding-top: 24px;
   position: relative;
   gap: 24px;
-  z-index: 0; // 스택 컨텍스트 생성
+  z-index: 0;
 }
 
-// align center of screen
-// preserve ratio
 .speak-bubble {
   position: absolute;
   left: calc(50% - 167.5px);

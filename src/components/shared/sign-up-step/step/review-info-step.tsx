@@ -52,7 +52,7 @@ export function ReviewInfoStep({ form }: Readonly<Props>) {
     <div className={styles.container}>
       <Bubble speech={speech} withTail />
       <Image src={munto} alt="munto" />
-      <Button>시작하기</Button>
+      <Button direction="bottom">시작하기</Button>
     </div>
   );
 }
