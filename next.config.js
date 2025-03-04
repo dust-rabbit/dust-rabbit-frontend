@@ -28,6 +28,7 @@ const nextConfig = {
     unoptimized: true,
   },
   experimental: {
+    // for useSearchParams usage in static export
     missingSuspenseWithCSRBailout: false,
   },
 };
