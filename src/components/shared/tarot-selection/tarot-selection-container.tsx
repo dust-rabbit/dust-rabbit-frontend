@@ -18,7 +18,9 @@ export function TarotSelectionContainer() {
 
   return (
     <main className={style.container}>
-      <Image src={munto} alt="munto" className={style["munto-img"]} />
+      <div className={style["munto-image-container"]}>
+        <Image src={munto} alt="munto" className={style["munto-img"]} />
+      </div>
       <TarotCardDeck addSelectedCardId={addSelectedCardId} />
       <SelectedCardsSlot />
       <Button
