@@ -6,6 +6,7 @@ export const SIGN_UP_STEPS: readonly SignUpStep[] = [
   "생년월일 입력",
   "출생시간 입력",
   "MBTI 입력",
+  "정보 확인",
 ];
 Object.freeze(SIGN_UP_STEPS);
 
