@@ -1,3 +1,5 @@
+"use client";
+
 import { SelectButtons } from "@/components/ui";
 import { useFormContext } from "@/hooks";
 import { Gender, SignUpForm } from "@/type";

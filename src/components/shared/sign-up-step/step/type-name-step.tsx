@@ -1,3 +1,5 @@
+"use client";
+
 import { FormInput } from "@/components/ui";
 import { useFormContext } from "@/hooks";
 import { ValidationSchema } from "@/lib/const";

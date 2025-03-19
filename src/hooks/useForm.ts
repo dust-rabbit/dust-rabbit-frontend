@@ -1,3 +1,5 @@
+"use client";
+
 import { useCallback, useState } from "react";
 
 type UseFormReturn<T extends Record<string, string | undefined>> = {
